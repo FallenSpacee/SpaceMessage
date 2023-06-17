@@ -1,18 +1,18 @@
 'use client';
 
+// next
+import Image from 'next/image';
+import {useSession} from 'next-auth/react';
+// react
+import {FC, useState} from 'react';
+// components
 import Avatar from '@/app/components/Avatar';
-import {FullMessageType} from '@/app/types';
+import ImageModal from '../ImageModal';
+// libraries
 import clsx from 'clsx';
 import {format} from 'date-fns';
-import {useSession} from 'next-auth/react';
-import Image from 'next/image';
-import {FC, useState} from 'react';
-import ImageModal from '../ImageModal';
-
-interface MessageBoxProps {
-  isLast?: boolean;
-  data: FullMessageType;
-}
+// types
+import {MessageBoxProps} from './types';
 
 const MessageBox: FC<MessageBoxProps> = ({isLast, data}) => {
   const session = useSession();

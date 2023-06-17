@@ -1,23 +1,24 @@
 'use client';
 
-import {User} from '@prisma/client';
-import {FC, useState} from 'react';
-import Modal from '../modals';
+// next
+import Image from 'next/image';
 import {useRouter} from 'next/navigation';
+// react
+import {FC, useState} from 'react';
+// components
+import Input from '@/app/components/Input';
+import Modal from '@/app/components/Modal';
+import Button from '@/app/components/Button';
+// libraries
 import {FieldValues, SubmitHandler, useForm} from 'react-hook-form';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import Input from '../Inputs';
-import Image from 'next/image';
+// images
 import AvatarImage from 'public/images/Avatar.jpg';
+// button for upload image
 import {CldUploadButton} from 'next-cloudinary';
-import Button from '../Button';
-
-interface SettingsModalProps {
-  currentUser: User;
-  isOpen: boolean;
-  onClose: () => void;
-}
+// types
+import {SettingsModalProps} from './types';
 
 const SettingsModal: FC<SettingsModalProps> = ({currentUser, isOpen, onClose}) => {
   const router = useRouter();

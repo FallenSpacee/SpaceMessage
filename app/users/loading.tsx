@@ -1,3 +1,4 @@
+// components
 import LoadingModal from '../components/LoadingModal';
 
 const Loading = () => {

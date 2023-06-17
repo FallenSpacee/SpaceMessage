@@ -1,5 +1,6 @@
 'use client';
 
+// libraries
 import {Toaster} from 'react-hot-toast';
 
 const ToasterContext = () => {

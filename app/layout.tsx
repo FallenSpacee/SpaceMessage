@@ -1,14 +1,18 @@
-import './globals.css';
+// fonts
 import {Inter} from 'next/font/google';
+// context
 import ToasterContext from './context/ToasterContext';
 import {AuthContext} from './context/AuthContext';
 
-const inter = Inter({subsets: ['latin']});
+// styles
+import './globals.css';
 
 export const metadata = {
   title: 'Space message',
   description: 'Space',
 };
+
+const inter = Inter({subsets: ['latin']});
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (

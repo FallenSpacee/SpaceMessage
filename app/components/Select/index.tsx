@@ -1,16 +1,11 @@
 'use client';
 
-import Image from 'next/image';
+// react
 import {FC} from 'react';
+// libraries
 import ReactSelect from 'react-select';
-
-interface SelectProps {
-  label: string;
-  value?: Record<string, any>;
-  onChange: (value: Record<string, any>) => void;
-  options: Record<string, any>[];
-  disabled?: boolean;
-}
+// types
+import {SelectProps} from './types';
 
 // TODO функионал с картинкой
 const Select: FC<SelectProps> = ({label, value, onChange, options, disabled}) => {

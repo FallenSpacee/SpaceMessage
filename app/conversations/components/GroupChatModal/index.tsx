@@ -1,21 +1,20 @@
 'use client';
 
-import Button from '@/app/components/Button';
-import Input from '@/app/components/Inputs';
-import Select from '@/app/components/Inputs/Select';
-import Modal from '@/app/components/modals';
-import {User} from '@prisma/client';
-import axios from 'axios';
+// next
 import {useRouter} from 'next/navigation';
+// react
 import {FC, useState} from 'react';
+// components
+import Button from '@/app/components/Button';
+import Input from '@/app/components/Input';
+import Select from '@/app/components/Select';
+import Modal from '@/app/components/Modal';
+// libraries
 import {FieldValues, SubmitHandler, useForm} from 'react-hook-form';
 import {toast} from 'react-hot-toast';
-
-interface GroupChatModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  users: User[];
-}
+import axios from 'axios';
+// types
+import {GroupChatModalProps} from './types';
 
 const GroupChatModal: FC<GroupChatModalProps> = ({isOpen, onClose, users}) => {
   const router = useRouter();

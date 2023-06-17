@@ -1,19 +1,20 @@
 'use client';
-import {FullConversationType} from '@/app/types';
-import {FC, useCallback, useMemo} from 'react';
+
+// next
 import {useRouter} from 'next/navigation';
-import {Conversation, Message, User} from '@prisma/client';
-import {format} from 'date-fns';
 import {useSession} from 'next-auth/react';
-import clsx from 'clsx';
+// react
+import {FC, useCallback, useMemo} from 'react';
+// hooks
 import useOtherUser from '@/app/hooks/useOtherUser';
+// components
 import Avatar from '@/app/components/Avatar';
 import AvatarGroup from '@/app/components/AvatarGroup';
-
-interface ConversationBoxProps {
-  data: FullConversationType;
-  selected?: boolean;
-}
+// libraries
+import {format} from 'date-fns';
+import clsx from 'clsx';
+// types
+import {ConversationBoxProps} from './types';
 
 const ConversationBox: FC<ConversationBoxProps> = ({data, selected}) => {
   const otherUser = useOtherUser(data);

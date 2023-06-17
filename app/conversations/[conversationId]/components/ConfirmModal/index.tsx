@@ -1,19 +1,22 @@
 'use client';
 
-import Button from '@/app/components/Button';
-import Modal from '@/app/components/modals';
+// next
+import {useRouter} from 'next/navigation';
+// react
+import {FC, useCallback, useState} from 'react';
+// hooks
 import useConversation from '@/app/hooks/useConversation';
+// components
+import Button from '@/app/components/Button';
+import Modal from '@/app/components/Modal';
+// libraries
 import {Dialog} from '@headlessui/react';
 import axios from 'axios';
-import {useRouter} from 'next/navigation';
-import {FC, useCallback, useState} from 'react';
 import {toast} from 'react-hot-toast';
+// icons
 import {FiAlertTriangle} from 'react-icons/fi';
-
-interface ConfirmModalProps {
-  isOpen?: boolean;
-  onClose: () => void;
-}
+// types
+import {ConfirmModalProps} from './types';
 
 const ConfirmModal: FC<ConfirmModalProps> = ({isOpen, onClose}) => {
   const router = useRouter();

@@ -1,16 +1,9 @@
 'use client';
 
+// react
 import {FC} from 'react';
-import {FieldErrors, FieldValues, UseFormRegister} from 'react-hook-form';
-
-interface MessageInputProps {
-  placeholder?: string;
-  id: string;
-  type?: string;
-  required?: boolean;
-  register: UseFormRegister<FieldValues>;
-  errors: FieldErrors;
-}
+// types
+import {MessageInputProps} from './types';
 
 const MessageInput: FC<MessageInputProps> = ({placeholder, id, type, required, register, errors}) => {
   return (

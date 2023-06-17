@@ -1,4 +1,6 @@
+// actions
 import getUsers from '../actions/getUsers';
+// components
 import Sidebar from '../components/sidebar/Sidebar';
 import UserList from './components/UserList';
 

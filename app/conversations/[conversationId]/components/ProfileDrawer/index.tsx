@@ -1,22 +1,20 @@
 'use client';
 
-import useOtherUser from '@/app/hooks/useOtherUser';
-import {Conversation, User} from '@prisma/client';
-import {format} from 'date-fns';
+// react
 import {FC, Fragment, useMemo, useState} from 'react';
-import {Dialog, Transition} from '@headlessui/react';
-import {IoClose, IoTrash} from 'react-icons/io5';
+// hooks
+import useOtherUser from '@/app/hooks/useOtherUser';
+// components
 import Avatar from '@/app/components/Avatar';
 import ConfirmModal from '../ConfirmModal';
 import AvatarGroup from '@/app/components/AvatarGroup';
-
-interface ProfileDrawerProps {
-  isOpen: boolean;
-  onClose: () => void;
-  data: Conversation & {
-    users: User[];
-  };
-}
+// libraries
+import {format} from 'date-fns';
+import {Dialog, Transition} from '@headlessui/react';
+// icons
+import {IoClose, IoTrash} from 'react-icons/io5';
+// types
+import {ProfileDrawerProps} from './types';
 
 const ProfileDrawer: FC<ProfileDrawerProps> = ({isOpen, onClose, data}) => {
   const otherUser = useOtherUser(data);
