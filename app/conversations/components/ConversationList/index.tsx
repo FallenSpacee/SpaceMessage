@@ -1,18 +1,20 @@
 'use client';
-import useConversation from '@/app/hooks/useConversation';
-import {FullConversationType} from '@/app/types';
-import {Conversation, User} from '@prisma/client';
-import clsx from 'clsx';
+
+// next
 import {useRouter} from 'next/navigation';
+// react
 import {FC, useState} from 'react';
-import {MdOutlineGroupAdd} from 'react-icons/md';
+// hooks
+import useConversation from '@/app/hooks/useConversation';
+// components
 import ConversationBox from '../ConversationBox';
 import GroupChatModal from '../GroupChatModal';
-
-interface ConversationListProps {
-  initialItems: FullConversationType[];
-  users: User[];
-}
+// libraries
+import clsx from 'clsx';
+// icons
+import {MdOutlineGroupAdd} from 'react-icons/md';
+// types
+import {ConversationListProps} from './types';
 
 const ConversationList: FC<ConversationListProps> = ({initialItems, users}) => {
   const [items, setItems] = useState(initialItems);

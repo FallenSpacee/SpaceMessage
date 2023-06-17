@@ -1,6 +1,8 @@
 'use client';
 
+// react
 import {Fragment} from 'react';
+// libraries
 import {Dialog, Transition} from '@headlessui/react';
 import {ClipLoader} from 'react-spinners';
 

@@ -1,16 +1,15 @@
 'use client';
 
-import React, {Fragment} from 'react';
+// react
+import {FC, Fragment} from 'react';
+// libraries
 import {Dialog, Transition} from '@headlessui/react';
+// icons
 import {IoClose} from 'react-icons/io5';
+// types
+import {ModalProps} from './types';
 
-interface ModalProps {
-  isOpen?: boolean;
-  onClose: () => void;
-  children: React.ReactNode;
-}
-
-const Modal: React.FC<ModalProps> = ({isOpen, onClose, children}) => {
+const Modal: FC<ModalProps> = ({isOpen, onClose, children}) => {
   return (
     <Transition.Root show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-50" onClose={onClose}>

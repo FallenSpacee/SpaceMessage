@@ -1,20 +1,20 @@
 'use client';
 
-import Avatar from '@/app/components/Avatar';
-import useOtherUser from '@/app/hooks/useOtherUser';
-import {Conversation, User} from '@prisma/client';
+// next
 import Link from 'next/link';
+// react
 import {FC, useMemo, useState} from 'react';
+// hooks
+import useOtherUser from '@/app/hooks/useOtherUser';
+// components
+import Avatar from '@/app/components/Avatar';
+import AvatarGroup from '@/app/components/AvatarGroup';
+import ProfileDrawer from '../ProfileDrawer';
+// icons
 import {HiChevronLeft} from 'react-icons/hi';
 import {HiEllipsisHorizontal} from 'react-icons/hi2';
-import ProfileDrawer from '../ProfileDrawer';
-import AvatarGroup from '@/app/components/AvatarGroup';
-
-interface HeaderProps {
-  conversation: Conversation & {
-    users: User[];
-  };
-}
+// types
+import {HeaderProps} from './types';
 
 const Header: FC<HeaderProps> = ({conversation}) => {
   const otherUser = useOtherUser(conversation);

@@ -1,16 +1,13 @@
 'use client';
 
-import clsx from 'clsx';
+// next
 import Link from 'next/link';
+// react
 import {FC} from 'react';
-
-interface DesktopItemProps {
-  label: string;
-  icon: any;
-  href: string;
-  onClick?: () => void;
-  active?: boolean;
-}
+// libraries
+import clsx from 'clsx';
+// types
+import {DesktopItemProps} from './types';
 
 const DesktopItem: FC<DesktopItemProps> = ({label, icon: Icon, href, onClick, active}) => {
   const handleClick = () => {

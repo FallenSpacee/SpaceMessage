@@ -1,6 +1,8 @@
+// actions
 import getCurrentUser from '@/app/actions/getCurrentUser';
-import DesktopSidebar from './DesktopSidebar';
-import MobileFooter from './MobileFooter';
+// components
+import DesktopSidebar from './DesktopComponents/DesktopSidebar';
+import MobileFooter from './MobileComponents/MobileFooter';
 
 async function SideBar({children}: {children: React.ReactNode}) {
   const currentUser = await getCurrentUser();

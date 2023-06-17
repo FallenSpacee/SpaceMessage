@@ -1,13 +1,15 @@
 'use client';
 
-import {User} from '@prisma/client';
+// next
 import Image from 'next/image';
+// react
 import {FC} from 'react';
+// images
 import AvatarImage from 'public/images/Avatar.jpg';
-
-interface AvatarGroupProps {
-  users?: User[];
-}
+// helpers
+import {positionMap} from './helpers';
+// types
+import {AvatarGroupProps} from './types';
 
 const AvatarGroup: FC<AvatarGroupProps> = ({users = []}) => {
   // TODO check this feature
@@ -19,12 +21,6 @@ const AvatarGroup: FC<AvatarGroupProps> = ({users = []}) => {
   // const slicedUsers = getRandomUsers(users, 3);
 
   const slicedUsers = users.slice(0, 3);
-
-  const positionMap = {
-    0: 'top-0 right-[12px]',
-    1: 'bottom-0 ',
-    2: 'bottom-0 left-[23px]',
-  };
 
   return (
     <div className="relative h-11 w-11">
