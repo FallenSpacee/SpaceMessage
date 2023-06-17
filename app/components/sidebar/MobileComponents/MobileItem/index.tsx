@@ -1,15 +1,13 @@
+// next
 import Link from 'next/link';
-
+// react
+import {FC} from 'react';
+// libraries
 import clsx from 'clsx';
+// types
+import {MobileItemProps} from './types';
 
-interface MobileItemProps {
-  href: string;
-  icon: any;
-  active?: boolean;
-  onClick?: () => void;
-}
-
-const MobileItem: React.FC<MobileItemProps> = ({href, icon: Icon, active, onClick}) => {
+const MobileItem: FC<MobileItemProps> = ({href, icon: Icon, active, onClick}) => {
   const handleClick = () => {
     if (onClick) {
       return onClick();

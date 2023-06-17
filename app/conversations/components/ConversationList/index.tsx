@@ -1,27 +1,34 @@
 'use client';
-import useConversation from '@/app/hooks/useConversation';
-import {FullConversationType} from '@/app/types';
-import {Conversation} from '@prisma/client';
-import clsx from 'clsx';
+
+// next
 import {useRouter} from 'next/navigation';
+// react
 import {FC, useState} from 'react';
-import {MdOutlineGroupAdd} from 'react-icons/md';
+// hooks
+import useConversation from '@/app/hooks/useConversation';
+// components
 import ConversationBox from '../ConversationBox';
+import GroupChatModal from '../GroupChatModal';
+// libraries
+import clsx from 'clsx';
+// icons
+import {MdOutlineGroupAdd} from 'react-icons/md';
+// types
+import {ConversationListProps} from './types';
 
-interface ConversationListProps {
-  initialItems: FullConversationType[];
-}
-
-const ConversationList: FC<ConversationListProps> = ({initialItems}) => {
+const ConversationList: FC<ConversationListProps> = ({initialItems, users}) => {
   const [items, setItems] = useState(initialItems);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const router = useRouter();
 
   const {conversationId, isOpen} = useConversation();
   return (
-    <aside
-      className={clsx(
-        `
+    <>
+      <GroupChatModal users={users} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <aside
+        className={clsx(
+          `
     fixed 
     inset-y-0 
     pb-20
@@ -33,16 +40,16 @@ const ConversationList: FC<ConversationListProps> = ({initialItems}) => {
     border-r 
     border-gray-200 
   `,
-        isOpen ? 'hidden' : 'block w-full left-0'
-      )}
-    >
-      <div className="px-5">
-        <div className="flex justify-between mb-4 pt-4">
-          <div className="text-2xl font-bold text-neutral-800">Messages</div>
-          <div>
-            <MdOutlineGroupAdd
-              size={50}
-              className="
+          isOpen ? 'hidden' : 'block w-full left-0'
+        )}
+      >
+        <div className="px-5">
+          <div className="flex justify-between mb-4 pt-4">
+            <div className="text-2xl font-bold text-neutral-800">Messages</div>
+            <div onClick={() => setIsModalOpen(true)}>
+              <MdOutlineGroupAdd
+                size={50}
+                className="
             rounded-full
             p-2
             bg-gray-100
@@ -51,14 +58,15 @@ const ConversationList: FC<ConversationListProps> = ({initialItems}) => {
             hover:opacity-75
             transition
             "
-            />
+              />
+            </div>
           </div>
+          {items.map((item) => (
+            <ConversationBox key={item.id} data={item} selected={conversationId === item.id} />
+          ))}
         </div>
-        {items.map((item) => (
-          <ConversationBox key={item.id} data={item} selected={conversationId === item.id} />
-        ))}
-      </div>
-    </aside>
+      </aside>
+    </>
   );
 };
 

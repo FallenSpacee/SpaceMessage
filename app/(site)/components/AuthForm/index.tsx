@@ -1,21 +1,27 @@
 'use client';
-import Button from '@/app/components/Button';
-import Input from '@/app/components/Inputs';
-import {FC, useCallback, useEffect, useState} from 'react';
-import {FieldValues, SubmitHandler, useForm} from 'react-hook-form';
-import AuthSocialButton from '../AuthSocialButton';
-import {BsGithub, BsGoogle} from 'react-icons/bs';
-import axios from 'axios';
-import {toast} from 'react-hot-toast';
+// next
 import {signIn, useSession} from 'next-auth/react';
 import {useRouter} from 'next/navigation';
+// react
+import {FC, useCallback, useEffect, useState} from 'react';
+// components
+import Button from '@/app/components/Button';
+import Input from '@/app/components/Input';
+import AuthSocialButton from '../AuthSocialButton';
+// libraries
+import {FieldValues, SubmitHandler, useForm} from 'react-hook-form';
+import axios from 'axios';
+import {toast} from 'react-hot-toast';
+// icons
+import {BsGithub, BsGoogle} from 'react-icons/bs';
+// types
+import {LoginVariants} from './types';
 
-type Variant = 'LOGIN' | 'REGISTER';
 const AuthForm: FC = () => {
   const session = useSession();
   const router = useRouter();
 
-  const [variant, setVariant] = useState<Variant>('LOGIN');
+  const [variant, setVariant] = useState<LoginVariants>('LOGIN');
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {

@@ -1,5 +1,8 @@
+// next
 import Image from 'next/image';
+// icons
 import SpaceIcon from 'public/images/spaceIcon.jpg';
+// components
 import AuthForm from './components/AuthForm';
 
 export default function Home() {

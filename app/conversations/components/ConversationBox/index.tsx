@@ -1,18 +1,20 @@
 'use client';
-import {FullConversationType} from '@/app/types';
-import {FC, useCallback, useMemo} from 'react';
-import {useRouter} from 'next/navigation';
-import {Conversation, Message, User} from '@prisma/client';
-import {format} from 'date-fns';
-import {useSession} from 'next-auth/react';
-import clsx from 'clsx';
-import useOtherUser from '@/app/hooks/useOtherUser';
-import Avatar from '@/app/components/Avatar';
 
-interface ConversationBoxProps {
-  data: FullConversationType;
-  selected?: boolean;
-}
+// next
+import {useRouter} from 'next/navigation';
+import {useSession} from 'next-auth/react';
+// react
+import {FC, useCallback, useMemo} from 'react';
+// hooks
+import useOtherUser from '@/app/hooks/useOtherUser';
+// components
+import Avatar from '@/app/components/Avatar';
+import AvatarGroup from '@/app/components/AvatarGroup';
+// libraries
+import {format} from 'date-fns';
+import clsx from 'clsx';
+// types
+import {ConversationBoxProps} from './types';
 
 const ConversationBox: FC<ConversationBoxProps> = ({data, selected}) => {
   const otherUser = useOtherUser(data);
@@ -65,7 +67,7 @@ const ConversationBox: FC<ConversationBoxProps> = ({data, selected}) => {
         selected ? 'bg-neutral-100' : 'bg-white'
       )}
     >
-      <Avatar user={otherUser} />
+      {data.isGroup ? <AvatarGroup users={data.users} /> : <Avatar user={otherUser} />}
       <div className="min-w-0 flex-1">
         <div className="flex justify-between items-center mb-1 ">
           <p className="text-md font-medium text-gray-900">{data.name || otherUser.name}</p>

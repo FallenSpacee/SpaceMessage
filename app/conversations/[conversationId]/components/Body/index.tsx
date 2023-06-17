@@ -1,14 +1,15 @@
 'use client';
 
-import useConversation from '@/app/hooks/useConversation';
-import {FullMessageType} from '@/app/types';
+// react
 import {FC, useEffect, useRef, useState} from 'react';
+// hooks
+import useConversation from '@/app/hooks/useConversation';
+// components
 import MessageBox from '../MessageBox';
+// libraries
 import axios from 'axios';
-
-interface BodyProps {
-  initialMessages: FullMessageType[];
-}
+import {BodyProps} from './types';
+// types
 
 const Body: FC<BodyProps> = ({initialMessages}) => {
   const [messages, setMessages] = useState(initialMessages);
