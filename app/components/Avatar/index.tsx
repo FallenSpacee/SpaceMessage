@@ -16,7 +16,7 @@ const Avatar: FC<AvatarProps> = ({user}) => {
 
   return (
     <div className="relative">
-      <div className="relative inline-block rounded-full overflow-hidden h-9 md:h-11 md:w-11">
+      <div className="relative inline-block rounded-full overflow-hidden h-11 w-11 max-sm:h-8 max-sm:w-8">
         <Image alt="avatar" src={user?.image || AvatarIcon} fill />
       </div>
       {isActive && (
