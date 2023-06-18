@@ -11,8 +11,12 @@ import axios from 'axios';
 import {BodyProps} from './types';
 import {pusherClient} from '@/app/libs/pusher';
 import {find} from 'lodash';
+// icons
+import {HiOutlineSearch} from 'react-icons/hi';
 // types
 import {FullMessageType} from '@/app/types';
+import useSearch from '@/app/hooks/UseSearch';
+import SearchInput from '@/app/components/SearchInput';
 
 const Body: FC<BodyProps> = ({initialMessages}) => {
   const [messages, setMessages] = useState(initialMessages);
@@ -70,10 +74,32 @@ const Body: FC<BodyProps> = ({initialMessages}) => {
     };
   }, [conversationId]);
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Initialize useSearch for filtering messages based on body
+  const {searchValue, setSearchValue, filteredItems} = useSearch(messages, 'body', 500);
   return (
     <div className="flex-1 overflow-y-auto">
-      {messages.map((message, i) => (
-        <MessageBox isLast={i === messages.length - 1} key={message.id} data={message} />
+      <div className="flex justify-end absolute top-0 right-12 max-sm:w-40 max-sm:text-[11px]">
+        <div className="w-80 mr-4 mt-4">
+          <div className="flex justify-end">
+            <HiOutlineSearch
+              className="w-6 h-6 mt-2 mr-2 text-sky-500 cursor-pointer"
+              onClick={() => setIsOpen(!isOpen)}
+            />
+            <div className={`transition-all duration-300 ${isOpen ? 'w-auto opacity-100' : 'w-0 opacity-0'}`}>
+              <SearchInput
+                type="text"
+                value={searchValue}
+                onChange={(e) => setSearchValue(e.target.value)}
+                placeholder="Search a message"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      {filteredItems.map((message, i) => (
+        <MessageBox isLast={i === filteredItems.length - 1} key={message.id} data={message} />
       ))}
       <div className="pt-24" ref={bottomRef} />
     </div>

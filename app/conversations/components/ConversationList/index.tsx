@@ -19,10 +19,15 @@ import {MdOutlineGroupAdd} from 'react-icons/md';
 // types
 import {FullConversationType} from '@/app/types';
 import {ConversationListProps} from './types';
+import SearchInput from '@/app/components/SearchInput';
+import useSearch from '@/app/hooks/UseSearch';
+import filterItems from './helpers';
 
 const ConversationList: FC<ConversationListProps> = ({initialItems, users}) => {
   const session = useSession();
   const router = useRouter();
+
+  const [searchValue, setSearchValue] = useState('');
 
   const {conversationId, isOpen} = useConversation();
 
@@ -84,6 +89,8 @@ const ConversationList: FC<ConversationListProps> = ({initialItems, users}) => {
     };
   }, [pusherKey, conversationId, router]);
 
+  const filteredItems = useMemo(() => filterItems(items, searchValue), [items, searchValue]);
+
   return (
     <>
       <GroupChatModal users={users} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
@@ -122,7 +129,14 @@ const ConversationList: FC<ConversationListProps> = ({initialItems, users}) => {
               />
             </div>
           </div>
-          {items.map((item) => (
+          <SearchInput
+            type="text"
+            placeholder="Search"
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+          />
+          {/* ... */}
+          {filteredItems.map((item) => (
             <ConversationBox key={item.id} data={item} selected={conversationId === item.id} />
           ))}
         </div>
