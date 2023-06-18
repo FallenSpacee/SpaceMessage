@@ -1,14 +1,30 @@
-'use client';
-
+// next
+import Image from 'next/image';
 // react
 import {FC} from 'react';
 // libraries
 import ReactSelect from 'react-select';
+// images
+import AvatarImage from 'public/images/Avatar.jpg';
 // types
-import {SelectProps} from './types';
+import {SelectProps, OptionsType} from './types';
 
-// TODO функионал с картинкой
 const Select: FC<SelectProps> = ({label, value, onChange, options, disabled}) => {
+  const formatOptionLabel = ({label, image}: OptionsType) => (
+    <div className="flex items-center">
+      {image ? (
+        <div className="w-6 h-6 mr-3">
+          <Image className="rounded-full" src={image} alt={label} width={20} height={20} />
+        </div>
+      ) : (
+        <div className="w-6 h-6 mr-3">
+          <Image className="rounded-full" src={AvatarImage} alt="Default Avatar" width={20} height={20} />
+        </div>
+      )}
+      <div>{label}</div>
+    </div>
+  );
+
   return (
     <div className="z-[100]">
       <label className="block text-sm font-medium leading-6 text-gray-900">{label}</label>
@@ -24,6 +40,8 @@ const Select: FC<SelectProps> = ({label, value, onChange, options, disabled}) =>
           classNames={{
             control: () => 'text-sm',
           }}
+          formatOptionLabel={formatOptionLabel}
+          getOptionLabel={(option: OptionsType) => option.label}
         />
       </div>
     </div>

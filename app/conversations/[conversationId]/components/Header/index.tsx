@@ -6,6 +6,7 @@ import Link from 'next/link';
 import {FC, useMemo, useState} from 'react';
 // hooks
 import useOtherUser from '@/app/hooks/useOtherUser';
+import useActiveList from '@/app/hooks/useActiveList';
 // components
 import Avatar from '@/app/components/Avatar';
 import AvatarGroup from '@/app/components/AvatarGroup';
@@ -21,13 +22,17 @@ const Header: FC<HeaderProps> = ({conversation}) => {
 
   const [drawerOpen, setDrawerOpen] = useState(false);
 
+  const {members} = useActiveList();
+
+  const isActive = members.indexOf(otherUser.email!) !== -1;
+
   const statusText = useMemo(() => {
     if (conversation.isGroup) {
       return `${conversation.users.length} members`;
     }
 
-    return 'Active';
-  }, [conversation]);
+    return isActive ? 'Online' : 'Offline';
+  }, [conversation, isActive]);
 
   return (
     <>

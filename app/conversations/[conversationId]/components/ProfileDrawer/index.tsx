@@ -31,7 +31,6 @@ const ProfileDrawer: FC<ProfileDrawerProps> = ({isOpen, onClose, data}) => {
 
   const statusText = useMemo(() => {
     if (data.isGroup) {
-      // TODO maybe  return `${data.users.length - 1} members`;
       return `${data.users.length} members`;
     }
   }, [data]);
