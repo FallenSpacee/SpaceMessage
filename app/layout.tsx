@@ -3,7 +3,8 @@ import {Inter} from 'next/font/google';
 // context
 import ToasterContext from './context/ToasterContext';
 import {AuthContext} from './context/AuthContext';
-
+// components
+import ActiveStatus from './components/ActiveStatus';
 // styles
 import './globals.css';
 
@@ -20,6 +21,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
       <body className={inter.className}>
         <AuthContext>
           <ToasterContext />
+          <ActiveStatus />
           {children}
         </AuthContext>
       </body>
