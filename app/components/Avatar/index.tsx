@@ -4,8 +4,8 @@
 import Image from 'next/image';
 // react
 import {FC} from 'react';
-// iconst
-import AvatarIcon from 'public/images/avatar.jpg';
+// icons
+import AvatarIcon from 'public/images/Avatar.jpg';
 // types
 import {AvatarProps} from './types';
 import useActiveList from '@/app/hooks/useActiveList';
