@@ -14,7 +14,7 @@ import {FieldValues, SubmitHandler, useForm} from 'react-hook-form';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 // images
-import AvatarImage from '../../../../public/images/avatar.jpg';
+import AvatarImage from '../../../../public/images/Avatar.jpg';
 // button for upload image
 import {CldUploadButton} from 'next-cloudinary';
 // types
