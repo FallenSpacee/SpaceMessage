@@ -64,7 +64,7 @@ const ProfileDrawer: FC<ProfileDrawerProps> = ({isOpen, onClose, data}) => {
                   leaveTo="translate-x-full"
                 >
                   <Dialog.Panel className="pointer-events-auto w-screen max-w-md">
-                    <div className="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
+                    <div className="flex h-full flex-col overflow-y-scroll bg-[#B19CD9] py-6 shadow-xl">
                       <div className="px-4 sn:px-6">
                         <div className="flex items-start justify-end">
                           <div className="ml-3 flex h-7 items-center">

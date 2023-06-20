@@ -24,7 +24,7 @@ const LoadingModal = () => {
         <div className="fixed inset-0 z-10 overflow-y-auto">
           <div className="flex min-h-full items-center justify-center p-4 text-center">
             <Dialog.Panel>
-              <ClipLoader size={40} color={'#3b82f6'} />
+              <ClipLoader size={40} color={'Orchid'} />
             </Dialog.Panel>
           </div>
         </div>

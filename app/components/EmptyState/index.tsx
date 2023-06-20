@@ -10,11 +10,18 @@ const EmptyState = () => {
     flex 
     items-center 
     justify-center
-    bg-gray-100
+    bg-[#B19CD9]
     "
+      style={{
+        backgroundImage: `url('https://klike.net/uploads/posts/2022-11/1668415312_3-25.jpg')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
     >
       <div className="text-center items-center flex flex-col">
-        <h3 className="mt-2 text-2xl font-semibold text-gray-900">Select a chat or start a new conversation</h3>
+        <h3 className="mb-[215px] text-2xl font-semibold text-purple-500 max-lg:hidden">
+          Select a chat or start a new conversation
+        </h3>
       </div>
     </div>
   );
