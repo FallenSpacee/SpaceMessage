@@ -5,7 +5,7 @@ import {FC} from 'react';
 // libraries
 import ReactSelect from 'react-select';
 // images
-import AvatarImage from '../../../public/images/Avatar.jpg';
+import AvatarImage from 'public/images/Avatar.jpg';
 // types
 import {SelectProps, OptionsType} from './types';
 

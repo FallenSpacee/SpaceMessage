@@ -5,7 +5,7 @@ import Image from 'next/image';
 // react
 import {FC} from 'react';
 // images
-import AvatarImage from '../../../public/images/Avatar.jpg';
+import AvatarImage from 'public/images/Avatar.jpg';
 // helpers
 import {positionMap} from './helpers';
 // types
