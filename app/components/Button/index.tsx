@@ -19,7 +19,7 @@ const Button: FC<ButtonProps> = ({type, fullWidth, children, onClick, secondary,
         fullWidth && 'w-full',
         secondary ? 'text-gray-900' : 'text-white',
         danger && 'bg-rose-500 hover:bg-rose-700 focus-visible:outline-rose-600',
-        !secondary && !danger && 'bg-blue-500 hover:bg-blue-700 focus-visible:outline-blue-600'
+        !secondary && !danger && ' bg-purple-500 hover:bg-purple-700 focus-visible:outline-purple-600'
       )}
     >
       {children}
