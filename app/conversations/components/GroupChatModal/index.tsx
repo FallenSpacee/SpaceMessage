@@ -15,6 +15,7 @@ import {toast} from 'react-hot-toast';
 import axios from 'axios';
 // types
 import {GroupChatModalProps} from './types';
+import {OptionsType} from '@/app/components/Select/types';
 
 const GroupChatModal: FC<GroupChatModalProps> = ({isOpen, onClose, users}) => {
   const router = useRouter();
@@ -70,7 +71,7 @@ const GroupChatModal: FC<GroupChatModalProps> = ({isOpen, onClose, users}) => {
               <Select
                 disabled={isLoading}
                 label="Members"
-                options={users.map((user) => ({value: user.id, label: user.name, image: user.image}))}
+                options={users.map((user) => ({value: user.id, label: user.name, image: user.image} as OptionsType))}
                 onChange={(value) => setValue('members', value, {shouldValidate: true})}
                 value={members}
               />
