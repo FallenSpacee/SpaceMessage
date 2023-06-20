@@ -77,7 +77,7 @@ const Body: FC<BodyProps> = ({initialMessages}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   // Initialize useSearch for filtering messages based on body
-  const {searchValue, setSearchValue, filteredItems} = useSearch(messages, 'body', 'startsWith', 500);
+  const {searchValue, setSearchValue, filteredItems} = useSearch(messages, 'body', 'includes', 500);
   return (
     <div
       className="flex-1 overflow-y-auto bg-purple-100 mx-[-1rem] pl-2"
