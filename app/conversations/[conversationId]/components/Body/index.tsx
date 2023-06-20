@@ -4,8 +4,10 @@
 import {FC, useEffect, useRef, useState} from 'react';
 // hooks
 import useConversation from '@/app/hooks/useConversation';
+import useSearch from '@/app/hooks/UseSearch';
 // components
 import MessageBox from '../MessageBox';
+import SearchInput from '@/app/components/SearchInput';
 // libraries
 import axios from 'axios';
 import {BodyProps} from './types';
@@ -15,8 +17,6 @@ import {find} from 'lodash';
 import {HiOutlineSearch} from 'react-icons/hi';
 // types
 import {FullMessageType} from '@/app/types';
-import useSearch from '@/app/hooks/UseSearch';
-import SearchInput from '@/app/components/SearchInput';
 
 const Body: FC<BodyProps> = ({initialMessages}) => {
   const [messages, setMessages] = useState(initialMessages);
@@ -77,7 +77,7 @@ const Body: FC<BodyProps> = ({initialMessages}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   // Initialize useSearch for filtering messages based on body
-  const {searchValue, setSearchValue, filteredItems} = useSearch(messages, 'body', 500);
+  const {searchValue, setSearchValue, filteredItems} = useSearch(messages, 'body', 'startsWith', 500);
   return (
     <div
       className="flex-1 overflow-y-auto bg-purple-100 mx-[-1rem] pl-2"
