@@ -79,15 +79,18 @@ const Body: FC<BodyProps> = ({initialMessages}) => {
   // Initialize useSearch for filtering messages based on body
   const {searchValue, setSearchValue, filteredItems} = useSearch(messages, 'body', 500);
   return (
-    <div className="flex-1 overflow-y-auto">
+    <div
+      className="flex-1 overflow-y-auto bg-purple-100 mx-[-1rem] pl-2"
+      style={{backgroundImage: 'url(/images/ChatBG.jpg)'}}
+    >
       <div className="flex justify-end absolute top-0 right-12 max-sm:w-40 max-sm:text-[11px]">
         <div className="w-80 mr-4 mt-4">
           <div className="flex justify-end">
             <HiOutlineSearch
-              className="w-6 h-6 mt-2 mr-2 text-sky-500 cursor-pointer"
+              className="w-6 h-6 mt-2 mr-2 text-purple-500 cursor-pointer"
               onClick={() => setIsOpen(!isOpen)}
             />
-            <div className={`transition-all duration-300 ${isOpen ? 'w-auto opacity-100' : 'w-0 opacity-0'}`}>
+            <div className={`transition-all duration-300 ${isOpen ? 'w-auto opacity-100' : 'hidden'}`}>
               <SearchInput
                 type="text"
                 value={searchValue}

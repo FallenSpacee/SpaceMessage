@@ -23,6 +23,7 @@ const GroupChatModal: FC<GroupChatModalProps> = ({isOpen, onClose, users}) => {
   const {
     register,
     handleSubmit,
+    reset, // Добавленный хук reset для сброса значений полей
     setValue,
     watch,
     formState: {errors},
@@ -47,6 +48,7 @@ const GroupChatModal: FC<GroupChatModalProps> = ({isOpen, onClose, users}) => {
         router.refresh();
         onClose();
         toast.success('Group chat created!');
+        reset();
       })
       .catch(() => {
         toast.error('Failed to create group chat');

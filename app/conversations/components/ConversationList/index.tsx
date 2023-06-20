@@ -106,14 +106,15 @@ const ConversationList: FC<ConversationListProps> = ({initialItems, users}) => {
     lg:block
     overflow-y-auto 
     border-r 
+    bg-[#B19CD9]
     border-gray-200 
   `,
           isOpen ? 'hidden' : 'block w-full left-0'
         )}
       >
-        <div className="px-5">
+        <div className="px-5 flex flex-col gap-y-2">
           <div className="flex justify-between mb-4 pt-4">
-            <div className="text-2xl font-bold text-neutral-800">Messages</div>
+            <div className="text-2xl font-bold text-white">Messages</div>
             <div onClick={() => setIsModalOpen(true)}>
               <MdOutlineGroupAdd
                 size={50}
