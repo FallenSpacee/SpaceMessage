@@ -3,13 +3,15 @@ import {useState, useMemo, useEffect, useCallback} from 'react';
 // libraries
 import {debounce} from 'lodash';
 
-const useSearch = (items: any[], searchKey: string, debounceDelay: number) => {
+const useSearch = (items: any[], searchKey: string, StrMethodKey: 'includes' | 'startsWith', debounceDelay: number) => {
   const [searchValue, setSearchValue] = useState('');
   const [debouncedSearchValue, setDebouncedSearchValue] = useState('');
 
   const filterItems = useCallback(
     (searchText: string) => {
-      return items.filter((item) => item[searchKey]?.toLowerCase().startsWith(searchText.toLowerCase()));
+      return searchText
+        ? items.filter((item) => item[searchKey]?.toLowerCase()[StrMethodKey](searchText.toLowerCase()))
+        : items;
     },
     [items, searchKey]
   );

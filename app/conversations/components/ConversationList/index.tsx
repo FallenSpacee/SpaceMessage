@@ -10,18 +10,18 @@ import useConversation from '@/app/hooks/useConversation';
 // components
 import ConversationBox from '../ConversationBox';
 import GroupChatModal from '../GroupChatModal';
+import SearchInput from '@/app/components/SearchInput';
 // libraries
 import {pusherClient} from '@/app/libs/pusher';
 import {find} from 'lodash';
 import clsx from 'clsx';
 // icons
 import {MdOutlineGroupAdd} from 'react-icons/md';
+// helpers
+import filterItems from './helpers';
 // types
 import {FullConversationType} from '@/app/types';
 import {ConversationListProps} from './types';
-import SearchInput from '@/app/components/SearchInput';
-import useSearch from '@/app/hooks/UseSearch';
-import filterItems from './helpers';
 
 const ConversationList: FC<ConversationListProps> = ({initialItems, users}) => {
   const session = useSession();
